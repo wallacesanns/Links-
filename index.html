@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wallace Designer | Links</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg-0:#0d0503;
+    --bg-1:#1c0906;
+    --red-1:#8f1a12;
+    --red-2:#c92a1e;
+    --red-3:#e63b2b;
+    --green-1:#0f5c33;
+    --green-2:#1f9d4d;
+    --green-3:#25d366;
+    --purple:#7c3aed;
+    --cream:#fdece7;
+    --muted:#c9a79f;
+  }
+
+  *{box-sizing:border-box;}
+
+  html,body{
+    margin:0;
+    padding:0;
+    min-height:100%;
+    background:
+      radial-gradient(circle at 50% 0%, #2a0904 0%, #1a0503 45%, #0a0201 100%);
+    font-family:'Poppins', system-ui, -apple-system, sans-serif;
+    color:#fff;
+    overflow-x:hidden;
+  }
+
+  body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    background-image:
+      linear-gradient(rgba(255,90,70,.09) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,90,70,.09) 1px, transparent 1px);
+    background-size:34px 34px;
+    pointer-events:none;
+    z-index:0;
+  }
+
+  .page{
+    position:relative;
+    z-index:1;
+    max-width:640px;
+    margin:0 auto;
+    padding:56px 20px 80px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    text-align:center;
+    opacity:0;
+    animation:pageIn .7s ease forwards;
+  }
+
+  @keyframes pageIn{
+    from{opacity:0; transform:translateY(14px);}
+    to{opacity:1; transform:translateY(0);}
+  }
+
+  /* ---------- profile ---------- */
+  .avatar-wrap{
+    position:relative;
+    width:128px;
+    height:128px;
+    margin-bottom:18px;
+    animation:floatIn .8s ease .1s both;
+  }
+
+  @keyframes floatIn{
+    from{opacity:0; transform:scale(.8);}
+    to{opacity:1; transform:scale(1);}
+  }
+
+  .avatar{
+    width:100%;
+    height:100%;
+    border-radius:50%;
+    background:linear-gradient(145deg, var(--red-3), var(--red-1) 70%);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:44px;
+    font-weight:800;
+    color:#fff;
+    border:3px solid rgba(255,255,255,.15);
+    box-shadow:0 0 0 6px rgba(230,59,43,.08), 0 12px 30px rgba(0,0,0,.55);
+    overflow:hidden;
+  }
+
+  .avatar img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+  }
+
+  .badge{
+    position:absolute;
+    top:-6px;
+    right:-6px;
+    width:34px;
+    height:34px;
+    border-radius:10px;
+    background:rgba(20,10,8,.55);
+    border:1.5px solid rgba(255,255,255,.5);
+    backdrop-filter:blur(2px);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    box-shadow:0 6px 14px rgba(0,0,0,.5);
+    transform:rotate(-8deg);
+    animation:badgePulse 2.6s ease-in-out infinite;
+  }
+  .badge span{ font-size:13px; font-weight:800; color:#fff; letter-spacing:-.5px; }
+
+  @keyframes badgePulse{
+    0%,100%{ transform:rotate(-8deg) scale(1); }
+    50%{ transform:rotate(-8deg) scale(1.08); }
+  }
+
+  h1.name{
+    margin:0 0 4px;
+    font-size:26px;
+    font-weight:800;
+    letter-spacing:.3px;
+    color:#fff;
+  }
+
+  .handle{
+    margin:0 0 12px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:5px;
+    font-size:14px;
+    font-weight:600;
+    color:#fff;
+  }
+
+  .handle .ig-link{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    width:22px;
+    height:22px;
+    border-radius:7px;
+    color:#fff;
+    font-size:14px;
+    text-decoration:none;
+    background:transparent;
+    transition:transform .18s ease;
+  }
+  .handle .ig-link:hover{ transform:scale(1.12) rotate(-4deg); }
+
+  .bio{
+    margin:0 0 34px;
+    max-width:360px;
+    font-size:13px;
+    line-height:1.5;
+    color:var(--muted);
+  }
+
+  /* ---------- link buttons ---------- */
+  .links{
+    width:100%;
+    display:flex;
+    flex-direction:column;
+    gap:28px;
+  }
+
+  .link-btn{
+    position:relative;
+    display:flex;
+    align-items:center;
+    width:100%;
+    min-height:92px;
+    padding:14px 22px 14px 108px;
+    border-radius:16px;
+    text-decoration:none;
+    color:#fff;
+    cursor:pointer;
+    border:none;
+    background:transparent;
+    transform:translateY(0) scale(1);
+    transition:transform .18s ease, box-shadow .18s ease;
+    opacity:0;
+    animation:itemIn .55s ease forwards;
+  }
+
+  .links .link-btn:nth-child(1){ animation-delay:.15s; }
+  .links .link-btn:nth-child(2){ animation-delay:.25s; }
+  .links .link-btn:nth-child(3){ animation-delay:.35s; }
+  .links .link-btn:nth-child(4){ animation-delay:.45s; }
+
+  @keyframes itemIn{
+    from{opacity:0; transform:translateY(14px);}
+    to{opacity:1; transform:translateY(0);}
+  }
+
+  .btn-bg{
+    position:absolute;
+    inset:0;
+    border-radius:16px;
+    overflow:hidden;
+    z-index:0;
+    background:linear-gradient(120deg, var(--red-2), var(--red-1));
+    box-shadow:0 10px 24px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.08);
+  }
+  .btn-bg::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:
+      repeating-linear-gradient(115deg, rgba(255,255,255,.05) 0 2px, transparent 2px 10px);
+    opacity:.5;
+  }
+
+  .link-btn.green .btn-bg{
+    background:linear-gradient(120deg, var(--green-2), var(--green-1));
+  }
+
+  .link-btn.featured{
+    padding-top:16px;
+    padding-bottom:16px;
+  }
+  .link-btn.featured .btn-bg{
+    border:2px solid var(--purple);
+    box-shadow:0 0 0 4px rgba(124,58,237,.15), 0 10px 24px rgba(0,0,0,.45);
+  }
+
+  .link-btn:hover{ transform:translateY(-3px) scale(1.015); }
+  .link-btn:hover .btn-bg{ box-shadow:0 16px 32px rgba(0,0,0,.55), inset 0 1px 0 rgba(255,255,255,.12); }
+  .link-btn:active{ transform:translateY(0) scale(.97); }
+
+  .text-block{
+    position:relative;
+    z-index:1;
+    text-align:left;
+    flex:1 1 auto;
+  }
+
+  .text-block .title{
+    display:block;
+    font-size:22px;
+    font-weight:800;
+    letter-spacing:.4px;
+    text-transform:uppercase;
+    line-height:1.1;
+  }
+
+  .text-block .subtitle{
+    display:block;
+    font-size:12.5px;
+    font-weight:500;
+    color:rgba(255,255,255,.88);
+    margin-top:3px;
+  }
+
+  .icon-right{
+    position:relative;
+    z-index:1;
+    flex:0 0 auto;
+    width:36px;
+    height:36px;
+    border-radius:50%;
+    background:rgba(255,255,255,.14);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:15px;
+    margin-left:10px;
+    transition:transform .18s ease;
+  }
+  .link-btn:hover .icon-right{ transform:translateX(3px); }
+
+  /* ripple */
+  .ripple{
+    position:absolute;
+    border-radius:50%;
+    background:rgba(255,255,255,.45);
+    transform:scale(0);
+    animation:rippleAnim .55s ease-out;
+    pointer-events:none;
+  }
+  @keyframes rippleAnim{ to{ transform:scale(3.2); opacity:0; } }
+
+  /* ---------- mockups ---------- */
+  .mockup{
+    position:absolute;
+    left:-6px;
+    top:50%;
+    transform:translateY(-50%) rotate(-6deg);
+    z-index:2;
+    filter:drop-shadow(0 10px 16px rgba(0,0,0,.55));
+    transition:transform .25s ease;
+  }
+  .link-btn:hover .mockup{ transform:translateY(-50%) rotate(-3deg) scale(1.04); }
+
+  .mockup-icon{
+    position:absolute;
+    width:26px;
+    height:26px;
+    border-radius:8px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:13px;
+    color:#fff;
+    box-shadow:0 4px 10px rgba(0,0,0,.5);
+    z-index:3;
+  }
+  .mockup-icon.behance{ background:#1769ff; }
+  .mockup-icon.whatsapp{ background:#25d366; border-radius:50%; }
+  .mockup-icon.tiktok{ background:#000; }
+  .mockup-icon.youtube{ background:#ff0033; border-radius:8px; }
+
+  /* laptop mockup (Portfolio) */
+  .laptop{ width:96px; }
+  .laptop .screen{
+    width:96px;
+    height:62px;
+    background:#0c0c0c;
+    border-radius:6px 6px 2px 2px;
+    padding:4px;
+    box-shadow:0 0 0 2px #3a3a3a;
+  }
+  .laptop .screen-inner{
+    width:100%;
+    height:100%;
+    background:linear-gradient(160deg,#1b1b1b,#050505);
+    border-radius:3px;
+    padding:5px;
+    display:flex;
+    flex-direction:column;
+    gap:3px;
+  }
+  .laptop .top-bar{
+    height:6px;
+    width:60%;
+    background:#1769ff;
+    border-radius:2px;
+  }
+  .laptop .tiles{
+    flex:1;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:3px;
+  }
+  .laptop .tiles span{
+    border-radius:2px;
+    background:linear-gradient(135deg,#e63b2b,#7c1a11);
+  }
+  .laptop .tiles span:nth-child(2){ background:linear-gradient(135deg,#1769ff,#0c3fa0); }
+  .laptop .tiles span:nth-child(3){ background:linear-gradient(135deg,#ffb703,#c77d00); }
+  .laptop .tiles span:nth-child(4){ background:linear-gradient(135deg,#25d366,#0f5c33); }
+  .laptop .base{
+    width:112px;
+    height:6px;
+    margin-left:-8px;
+    background:linear-gradient(180deg,#d9d9d9,#9c9c9c);
+    border-radius:0 0 6px 6px;
+  }
+  .laptop .icon-tl{ top:-10px; left:-10px; }
+  .laptop .icon-br{ bottom:2px; right:-12px; }
+
+  /* phone mockup (WhatsApp / TikTok / YouTube) */
+  .phone{ width:62px; }
+  .phone .body{
+    width:62px;
+    height:118px;
+    background:#0c0c0c;
+    border-radius:12px;
+    padding:4px;
+    box-shadow:0 0 0 2px #2c2c2c;
+  }
+  .phone .screen{
+    width:100%;
+    height:100%;
+    border-radius:9px;
+    overflow:hidden;
+    position:relative;
+    display:flex;
+    flex-direction:column;
+  }
+
+  /* whatsapp screen */
+  .wa-screen{ background:#e5ddd5; }
+  .wa-header{ height:20px; background:#1f9d4d; }
+  .wa-body{ flex:1; padding:6px 5px; display:flex; flex-direction:column; gap:5px; }
+  .wa-bubble{ height:9px; border-radius:5px; background:#fff; box-shadow:0 1px 1px rgba(0,0,0,.1); }
+  .wa-bubble.mine{ background:#dcf8c6; align-self:flex-end; width:70%; }
+  .wa-bubble.theirs{ width:60%; }
+  .wa-bubble.short{ width:40%; }
+
+  /* tiktok screen */
+  .tt-screen{ background:linear-gradient(180deg,#1a1a1a,#000); position:relative; flex:1; }
+  .tt-screen .tt-play{
+    position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
+    color:rgba(255,255,255,.85); font-size:20px;
+  }
+  .tt-screen .tt-side{
+    position:absolute; right:5px; bottom:10px; display:flex; flex-direction:column; gap:8px;
+    color:#fff; font-size:11px; align-items:center;
+  }
+  .tt-screen .tt-side i{ display:block; }
+  .tt-screen .tt-bar{
+    position:absolute; left:6px; bottom:8px; width:36px; height:5px; border-radius:3px; background:rgba(255,255,255,.25);
+  }
+
+  /* youtube screen */
+  .yt-screen{ background:#0f0f0f; flex:1; display:flex; flex-direction:column; }
+  .yt-thumb{
+    height:56%;
+    background:linear-gradient(135deg,#3a3a3a,#161616);
+    position:relative;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .yt-thumb .yt-play{
+    width:22px; height:22px; border-radius:50%; background:#ff0033;
+    display:flex; align-items:center; justify-content:center; color:#fff; font-size:10px;
+  }
+  .yt-lines{ padding:6px 5px; display:flex; flex-direction:column; gap:4px; }
+  .yt-lines span{ height:5px; border-radius:3px; background:#3a3a3a; }
+  .yt-lines span:nth-child(2){ width:60%; }
+
+  .phone .icon-tl{ top:-10px; left:-10px; }
+  .phone .icon-br{ bottom:-8px; right:-10px; }
+
+  footer{
+    margin-top:40px;
+    font-size:11px;
+    color:rgba(255,255,255,.3);
+    letter-spacing:.4px;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation:none !important; transition:none !important; }
+  }
+
+  @media (max-width:420px){
+    .link-btn{ padding-left:96px; min-height:84px; }
+    .laptop{ width:82px; }
+    .laptop .screen{ width:82px; height:54px; }
+    .laptop .base{ width:96px; }
+    .phone{ width:54px; }
+    .phone .body{ width:54px; height:102px; }
+    .text-block .title{ font-size:19px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <div class="avatar-wrap">
+    <div class="avatar">
+      <img src="foto.png" alt="Wallace Designer">
+    </div>
+    <div class="badge"><span>Ps</span></div>
+  </div>
+
+  <h1 class="name">Wallace Designer</h1>
+  <p class="handle">
+    <a class="ig-link" href="https://www.instagram.com/wallace.designer/" target="_blank" rel="noopener" aria-label="Instagram">
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="2" y="2" width="20" height="20" rx="5"></rect>
+        <circle cx="12" cy="12" r="4.2"></circle>
+        <circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"></circle>
+      </svg>
+    </a>
+    @wallace.designer
+  </p>
+  <p class="bio">Seja bem-vindo(a), aqui você encontrará todos os links úteis para orçamento e portfólio!</p>
+
+  <div class="links">
+
+    <!-- PORTFOLIO -->
+    <a class="link-btn" href="https://www.behance.net/wallacedesigner" target="_blank" rel="noopener">
+      <div class="btn-bg"></div>
+      <div class="mockup laptop">
+        <div class="mockup-icon behance icon-tl"><i class="fa-brands fa-behance"></i></div>
+        <div class="screen">
+          <div class="screen-inner">
+            <div class="top-bar"></div>
+            <div class="tiles"><span></span><span></span><span></span><span></span></div>
+          </div>
+        </div>
+        <div class="base"></div>
+        <div class="mockup-icon behance icon-br"><i class="fa-brands fa-behance"></i></div>
+      </div>
+      <span class="text-block">
+        <span class="title">Portfólio</span>
+        <span class="subtitle">no Behance</span>
+      </span>
+      <span class="icon-right"><i class="fa-solid fa-arrow-right"></i></span>
+    </a>
+
+    <!-- ORCAMENTO -->
+    <a class="link-btn green featured" href="https://wa.me/5511977693221" target="_blank" rel="noopener">
+      <div class="btn-bg"></div>
+      <div class="mockup phone">
+        <div class="mockup-icon whatsapp icon-tl"><i class="fa-brands fa-whatsapp"></i></div>
+        <div class="body">
+          <div class="screen wa-screen">
+            <div class="wa-header"></div>
+            <div class="wa-body">
+              <div class="wa-bubble theirs"></div>
+              <div class="wa-bubble mine"></div>
+              <div class="wa-bubble theirs short"></div>
+            </div>
+          </div>
+        </div>
+        <div class="mockup-icon whatsapp icon-br"><i class="fa-brands fa-whatsapp"></i></div>
+      </div>
+      <span class="text-block">
+        <span class="title">Orçamento</span>
+        <span class="subtitle">pelo WhatsApp</span>
+      </span>
+      <span class="icon-right"><i class="fa-solid fa-arrow-right"></i></span>
+    </a>
+
+    <!-- TIKTOK -->
+    <a class="link-btn" href="https://www.tiktok.com/@wallace.santos8001" target="_blank" rel="noopener">
+      <div class="btn-bg"></div>
+      <div class="mockup phone">
+        <div class="mockup-icon tiktok icon-tl"><i class="fa-brands fa-tiktok"></i></div>
+        <div class="body">
+          <div class="screen tt-screen">
+            <div class="tt-play"><i class="fa-solid fa-play"></i></div>
+            <div class="tt-bar"></div>
+            <div class="tt-side">
+              <i class="fa-solid fa-heart"></i>
+              <i class="fa-solid fa-comment"></i>
+              <i class="fa-brands fa-tiktok"></i>
+            </div>
+          </div>
+        </div>
+        <div class="mockup-icon tiktok icon-br"><i class="fa-brands fa-tiktok"></i></div>
+      </div>
+      <span class="text-block">
+        <span class="title">TikTok</span>
+        <span class="subtitle">Siga meu perfil</span>
+      </span>
+      <span class="icon-right"><i class="fa-solid fa-arrow-right"></i></span>
+    </a>
+
+    <!-- YOUTUBE -->
+    <a class="link-btn" href="https://www.youtube.com/@WallaceThumbmaker" target="_blank" rel="noopener">
+      <div class="btn-bg"></div>
+      <div class="mockup phone">
+        <div class="mockup-icon youtube icon-tl"><i class="fa-brands fa-youtube"></i></div>
+        <div class="body">
+          <div class="screen yt-screen">
+            <div class="yt-thumb"><div class="yt-play"><i class="fa-solid fa-play"></i></div></div>
+            <div class="yt-lines"><span></span><span></span></div>
+          </div>
+        </div>
+        <div class="mockup-icon youtube icon-br"><i class="fa-brands fa-youtube"></i></div>
+      </div>
+      <span class="text-block">
+        <span class="title">YouTube</span>
+        <span class="subtitle">Inscreva-se no meu canal</span>
+      </span>
+      <span class="icon-right"><i class="fa-solid fa-arrow-right"></i></span>
+    </a>
+
+  </div>
+
+  <footer>Wallace Designer &copy; 2026</footer>
+
+</div>
+
+<script>
+  document.querySelectorAll('.link-btn').forEach(function(btn){
+    btn.addEventListener('click', function(e){
+      var bg = btn.querySelector('.btn-bg');
+      var rect = bg.getBoundingClientRect();
+      var ripple = document.createElement('span');
+      var size = Math.max(rect.width, rect.height);
+      ripple.className = 'ripple';
+      ripple.style.width = ripple.style.height = size + 'px';
+      ripple.style.left = (e.clientX - rect.left - size/2) + 'px';
+      ripple.style.top = (e.clientY - rect.top - size/2) + 'px';
+      bg.appendChild(ripple);
+      setTimeout(function(){ ripple.remove(); }, 600);
+    });
+  });
+</script>
+
+</body>
+</html>
