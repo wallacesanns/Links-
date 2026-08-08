@@ -96,7 +96,7 @@ a:focus-visible, button:focus-visible, summary:focus-visible{
 .bg-layer{
   position:fixed; inset:0; z-index:-2;
   background:
-    radial-gradient(ellipse 90% 60% at 50% -10%, rgba(232,16,43,0.16), transparent 60%),
+    radial-gradient(ellipse 90% 60% at 50% -10%, rgba(139,0,0,0.14), transparent 60%),
     linear-gradient(180deg, var(--black) 0%, var(--black-2) 40%, #170a0b 70%, var(--black) 100%);
 }
 .grain{
@@ -121,27 +121,6 @@ a:focus-visible, button:focus-visible, summary:focus-visible{
   color:var(--gray);
   margin-bottom:18px;
 }
-.eyebrow::before{
-  content:"";
-  width:7px; height:7px;
-  border-radius:50%;
-  background:var(--red-glow);
-  box-shadow:0 0 10px 2px var(--red-glow);
-}
-
-.frame{
-  position:relative;
-}
-.frame::before, .frame::after,
-.frame .fc-tl, .frame .fc-tr, .frame .fc-bl, .frame .fc-br{
-  content:""; position:absolute; width:22px; height:22px;
-  border-color:var(--red-glow);
-  opacity:.8;
-}
-.frame::before{ top:-10px; left:-10px; border-top:2px solid var(--red-glow); border-left:2px solid var(--red-glow); }
-.frame::after{ bottom:-10px; right:-10px; border-bottom:2px solid var(--red-glow); border-right:2px solid var(--red-glow); }
-.frame .fc-tr{ top:-10px; right:-10px; border-top:2px solid var(--red-glow); border-right:2px solid var(--red-glow); }
-.frame .fc-bl{ bottom:-10px; left:-10px; border-bottom:2px solid var(--red-glow); border-left:2px solid var(--red-glow); }
 
 .ratio-tag{
   position:absolute; bottom:12px; left:12px;
@@ -329,6 +308,12 @@ header.scrolled{
 .about-photo{
   width:100%; aspect-ratio:4/5;
   border-radius:20px;
+  position:relative;
+  overflow:visible;
+}
+.about-photo-inner{
+  width:100%; height:100%;
+  border-radius:20px;
   background:
     radial-gradient(circle at 70% 15%, rgba(232,16,43,.3), transparent 55%),
     linear-gradient(160deg,#1c1010,#0a0808 75%);
@@ -337,27 +322,47 @@ header.scrolled{
   position:relative;
   overflow:hidden;
 }
-.about-photo svg{ width:40%; opacity:.25; }
-.about-stats{
+.about-photo-inner svg{ width:40%; opacity:.25; }
+.stat-card{
   position:absolute;
-  left:20px; right:20px; bottom:20px;
-  display:grid; grid-template-columns:1fr 1fr; gap:12px;
-  z-index:2;
-}
-.about-stats .stat-card{
-  background:rgba(10,8,8,.6);
+  background:rgba(10,8,8,.85);
   border:1px solid var(--glass-border);
   border-left:2px solid var(--red-glow);
   backdrop-filter:blur(10px);
   border-radius:14px;
   padding:16px 14px;
   text-align:left;
+  z-index:3;
+  box-shadow:0 14px 34px rgba(0,0,0,.45);
 }
-.about-stats .stat-card b{ display:block; font-family:var(--font-display); font-size:16px; color:var(--white); margin-bottom:3px; }
-.about-stats .stat-card span{ font-size:12px; color:var(--gray); }
+.stat-card b{ display:block; font-family:var(--font-display); font-size:16px; color:var(--white); margin-bottom:3px; }
+.stat-card span{ font-size:12px; color:var(--gray); }
+.stat-card-1{ top:34px; right:-30px; }
+.stat-card-2{ bottom:50px; left:-26px; }
+.ps-badge{
+  position:absolute;
+  top:30%;
+  left:-24px;
+  width:58px; height:58px;
+  border-radius:14px;
+  display:flex; align-items:center; justify-content:center;
+  background:rgba(15,10,10,.3);
+  border:1px solid rgba(232,16,43,.35);
+  backdrop-filter:blur(6px);
+  box-shadow:0 10px 26px rgba(0,0,0,.4);
+  font-family:var(--font-display);
+  font-weight:700;
+  font-size:20px;
+  letter-spacing:.5px;
+  color:rgba(255,255,255,.55);
+  text-shadow:0 0 14px rgba(232,16,43,.5);
+  z-index:3;
+}
 @media (max-width:560px){
-  .about-stats{ left:12px; right:12px; bottom:12px; gap:8px; }
-  .about-stats .stat-card{ padding:12px 10px; }
+  .stat-card{ padding:12px 10px; }
+  .stat-card-1{ top:18px; right:-12px; }
+  .stat-card-2{ bottom:22px; left:-12px; }
+  .ps-badge{ width:46px; height:46px; font-size:16px; left:-14px; }
 }
 .about-text p{ color:var(--gray); margin-bottom:18px; font-size:15.5px; }
 .verse{
@@ -585,7 +590,7 @@ footer{
 
 <div class="bg-layer"></div>
 <div class="grain"></div>
-<div class="glow-blob" style="width:520px;height:520px; top:-10%; left:-10%; background:var(--red-bright);"></div>
+<div class="glow-blob" style="width:520px;height:520px; top:-10%; left:-10%; background:var(--red-mid); opacity:.35;"></div>
 <div class="glow-blob" style="width:420px;height:420px; top:60%; right:-8%; background:var(--red-mid);"></div>
 <div class="glow-blob" style="width:360px;height:360px; bottom:-6%; left:20%; background:var(--red-bright); opacity:.3;"></div>
 
@@ -622,7 +627,6 @@ footer{
 <section class="hero" id="top">
   <div class="wrap">
     <div style="max-width:720px;">
-      <p class="eyebrow reveal in">DESIGNER GRÁFICO · THUMBNAILS YOUTUBE</p>
       <h1 class="reveal in">Thumbnails que <span class="hl">chamam atenção</span> e valorizam o seu conteúdo.</h1>
       <p class="lead reveal in reveal-d1">Designer gráfico especializado em Thumbnails para YouTube e identidade visual para criadores de conteúdo.</p>
       <div class="hero-actions reveal in reveal-d2">
@@ -638,17 +642,16 @@ footer{
 <section class="section" id="sobre">
   <div class="wrap about-grid">
     <div class="about-photo-wrap">
-      <div class="about-photo frame reveal">
-        <span class="fc-tr"></span><span class="fc-bl"></span>
-        <img src="assets/foto_perfil.png" alt="Wallace Designer" style="width:100%;height:100%;object-fit:cover;">
-        <div class="about-stats reveal reveal-d4">
-          <div class="stat-card"><b>+5.000</b><span>thumbnails criadas</span></div>
-          <div class="stat-card"><b>6+ anos</b><span>de experiência</span></div>
+      <div class="about-photo reveal">
+        <div class="about-photo-inner">
+          <img src="assets/foto_perfil.png" alt="Wallace Designer" style="width:100%;height:100%;object-fit:cover;">
         </div>
+        <div class="ps-badge reveal reveal-d3" aria-hidden="true">Ps</div>
+        <div class="stat-card stat-card-1 reveal reveal-d4"><b>+5.000</b><span>thumbnails criadas</span></div>
+        <div class="stat-card stat-card-2 reveal reveal-d4"><b>6+ anos</b><span>de experiência</span></div>
       </div>
     </div>
     <div class="about-text">
-      <p class="eyebrow reveal">A HISTÓRIA</p>
       <h2 class="section-title reveal reveal-d1">Quem está por trás das thumbnails?</h2>
       <div style="margin-top:30px;">
         <p class="reveal reveal-d1">Olá! Meu nome é Wallace e, antes de me tornar designer, meu maior sonho sempre foi ser YouTuber. Foi justamente essa paixão pela criação de conteúdo que me fez descobrir o universo do design e, principalmente, das thumbnails.</p>
@@ -664,7 +667,6 @@ footer{
 <!-- ============ CLIENTES ============ -->
 <section class="section" id="clientes">
   <div class="wrap">
-    <p class="eyebrow reveal center" style="justify-content:center;">CONFIANÇA</p>
     <h2 class="section-title center reveal reveal-d1">Clientes que confiaram no meu trabalho</h2>
     <div class="client-grid" id="clientGrid"></div>
   </div>
@@ -673,12 +675,19 @@ footer{
 <!-- ============ GALERIA ============ -->
 <section class="section" id="galeria">
   <div class="wrap">
-    <p class="eyebrow reveal center" style="justify-content:center;">PORTFÓLIO · 16:9</p>
     <h2 class="section-title center reveal reveal-d1">Trabalhos em destaque</h2>
     <p class="section-kicker center reveal reveal-d1">Uma seleção de thumbnails desenvolvidas para criadores de conteúdo. Clique para ampliar.</p>
     <div class="gallery-grid" id="galleryGrid"></div>
     <div class="gallery-cta reveal reveal-d2">
-      <a href="https://www.behance.net/wallacedesigner" target="_blank" rel="noopener" class="btn btn-ghost">Ver portfólio completo no Behance</a>
+      <a href="https://www.behance.net/wallacedesigner" target="_blank" rel="noopener" class="btn btn-ghost">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M2.5 6.5h4.3c1.7 0 2.8.9 2.8 2.4 0 1-.5 1.7-1.4 2 1.1.3 1.8 1.2 1.8 2.4 0 1.7-1.3 2.7-3.1 2.7H2.5z"/>
+          <path d="M2.5 10.6h3.9"/>
+          <path d="M14 8.6h3.6"/>
+          <path d="M13.6 12.6a3 3 0 1 0 5.9-.8 2.9 2.9 0 0 0-2.9-2.6 3 3 0 0 0-3 3 3 3 0 0 0 3 3.1c1.1 0 1.9-.4 2.6-1.3"/>
+        </svg>
+        Ver portfólio completo no Behance
+      </a>
     </div>
   </div>
 </section>
@@ -692,7 +701,6 @@ footer{
 <!-- ============ ANTES E DEPOIS ============ -->
 <section class="section" id="antes-depois">
   <div class="wrap">
-    <p class="eyebrow reveal center" style="justify-content:center;">TRANSFORMAÇÃO</p>
     <h2 class="section-title center reveal reveal-d1">Antes e depois</h2>
     <p class="section-kicker center reveal reveal-d1">Arraste para comparar a foto original com a thumbnail finalizada por mim.</p>
     <div class="ba-wrap reveal reveal-d2">
@@ -717,7 +725,6 @@ footer{
 <!-- ============ DIFERENCIAIS ============ -->
 <section class="section" id="diferenciais">
   <div class="wrap">
-    <p class="eyebrow reveal center" style="justify-content:center;">POR QUE TRABALHAR COMIGO</p>
     <h2 class="section-title center reveal reveal-d1">Diferenciais</h2>
     <div class="diff-grid" id="diffGrid"></div>
   </div>
@@ -726,7 +733,6 @@ footer{
 <!-- ============ FAQ ============ -->
 <section class="section" id="faq">
   <div class="wrap">
-    <p class="eyebrow reveal center" style="justify-content:center;">DÚVIDAS</p>
     <h2 class="section-title center reveal reveal-d1">Perguntas frequentes</h2>
     <div class="faq-list reveal reveal-d2" id="faqList"></div>
   </div>
@@ -735,7 +741,6 @@ footer{
 <!-- ============ CONTATO ============ -->
 <section class="section contact-section" id="contato">
   <div class="wrap">
-    <p class="eyebrow reveal center" style="justify-content:center;">VAMOS CONVERSAR</p>
     <h2 class="reveal reveal-d1">Vamos criar thumbnails que realmente chamam atenção?</h2>
     <p class="lead reveal reveal-d1">Envie os detalhes do seu vídeo e receba sua thumbnail em até 2 horas.</p>
     <a href="https://api.whatsapp.com/send/?phone=5511977693221&text=Ol%C3%A1%2C%20Wallace!%20Quero%20solicitar%20um%20or%C3%A7amento." target="_blank" rel="noopener" class="btn btn-primary whatsapp-btn reveal reveal-d2">Falar no WhatsApp</a>
@@ -849,7 +854,7 @@ const placeholderSVG = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColo
 thumbs.forEach((th,i) => {
   const div = document.createElement('div');
   div.className = `thumb reveal reveal-d${(i%3)+1}`;
-  div.innerHTML = `<span class="thumb-badge">16:9</span><img src="${th.img}" alt="${th.t}" width="900" height="506" loading="lazy" decoding="async" onerror="this.remove(); this.parentElement.classList.add('no-img');"><div class="thumb-placeholder">${placeholderSVG}</div><div class="thumb-inner"><b>${th.t}</b></div>`;
+  div.innerHTML = `<img src="${th.img}" alt="${th.t}" width="900" height="506" loading="lazy" decoding="async" onerror="this.remove(); this.parentElement.classList.add('no-img');"><div class="thumb-placeholder">${placeholderSVG}</div><div class="thumb-inner"><b>${th.t}</b></div>`;
   div.addEventListener('click', () => openLightbox(th));
   galleryGrid.appendChild(div);
   io.observe(div);
