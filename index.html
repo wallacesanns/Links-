@@ -322,6 +322,10 @@ header.scrolled{
   display:grid; grid-template-columns:.8fr 1.2fr; gap:70px; align-items:start;
 }
 @media (max-width:900px){ .about-grid{ grid-template-columns:1fr; gap:48px; } }
+.about-photo-wrap{
+  position:sticky; top:120px;
+}
+@media (max-width:900px){ .about-photo-wrap{ position:static; } }
 .about-photo{
   width:100%; aspect-ratio:4/5;
   border-radius:20px;
@@ -330,11 +334,31 @@ header.scrolled{
     linear-gradient(160deg,#1c1010,#0a0808 75%);
   border:1px solid var(--glass-border);
   display:flex; align-items:center; justify-content:center;
-  position:sticky; top:120px;
+  position:relative;
   overflow:hidden;
 }
 .about-photo svg{ width:40%; opacity:.25; }
-@media (max-width:900px){ .about-photo{ position:static; } }
+.about-stats{
+  position:absolute;
+  left:20px; right:20px; bottom:20px;
+  display:grid; grid-template-columns:1fr 1fr; gap:12px;
+  z-index:2;
+}
+.about-stats .stat-card{
+  background:rgba(10,8,8,.6);
+  border:1px solid var(--glass-border);
+  border-left:2px solid var(--red-glow);
+  backdrop-filter:blur(10px);
+  border-radius:14px;
+  padding:16px 14px;
+  text-align:left;
+}
+.about-stats .stat-card b{ display:block; font-family:var(--font-display); font-size:16px; color:var(--white); margin-bottom:3px; }
+.about-stats .stat-card span{ font-size:12px; color:var(--gray); }
+@media (max-width:560px){
+  .about-stats{ left:12px; right:12px; bottom:12px; gap:8px; }
+  .about-stats .stat-card{ padding:12px 10px; }
+}
 .about-text p{ color:var(--gray); margin-bottom:18px; font-size:15.5px; }
 .verse{
   font-family:var(--font-display); font-weight:400; font-style:normal;
@@ -344,19 +368,6 @@ header.scrolled{
   margin:30px 0 34px;
   line-height:1.55;
 }
-.stat-cards{
-  display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:10px;
-}
-@media (max-width:560px){ .stat-cards{ grid-template-columns:repeat(2,1fr); } }
-.stat-card{
-  background:var(--glass-bg); border:1px solid var(--glass-border); border-radius:14px;
-  padding:18px 16px; text-align:left;
-  transition:transform .3s var(--ease), border-color .3s;
-}
-.stat-card:hover{ transform:translateY(-4px); border-color:rgba(255,45,69,.4); }
-.stat-card b{ display:block; font-family:var(--font-display); font-size:14.5px; color:var(--white); margin-bottom:3px; }
-.stat-card span{ font-size:12.5px; color:var(--gray-dim); }
-
 /* ============ CLIENTES ============ */
 .client-grid{
   display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin-top:56px;
@@ -626,9 +637,15 @@ footer{
 <!-- ============ SOBRE ============ -->
 <section class="section" id="sobre">
   <div class="wrap about-grid">
-    <div class="about-photo frame reveal">
-      <span class="fc-tr"></span><span class="fc-bl"></span>
-      <img src="assets/foto_perfil.png" alt="Wallace Designer" style="width:100%;height:100%;object-fit:cover;">
+    <div class="about-photo-wrap">
+      <div class="about-photo frame reveal">
+        <span class="fc-tr"></span><span class="fc-bl"></span>
+        <img src="assets/foto_perfil.png" alt="Wallace Designer" style="width:100%;height:100%;object-fit:cover;">
+        <div class="about-stats reveal reveal-d4">
+          <div class="stat-card"><b>+5.000</b><span>thumbnails criadas</span></div>
+          <div class="stat-card"><b>6+ anos</b><span>de experiência</span></div>
+        </div>
+      </div>
     </div>
     <div class="about-text">
       <p class="eyebrow reveal">A HISTÓRIA</p>
@@ -639,14 +656,6 @@ footer{
         <p class="reveal reveal-d2">Acredito que uma boa thumbnail vai muito além de um design bonito. Ela precisa comunicar a ideia do vídeo em segundos, fortalecer a identidade do canal e aumentar as chances de conquistar novos espectadores.</p>
         <p class="reveal reveal-d3">Será um prazer contribuir para o crescimento do seu projeto, oferecendo um trabalho feito com dedicação, atenção aos detalhes e compromisso com a qualidade.</p>
         <p class="verse reveal reveal-d3">"Assim, quer vocês comam, bebam ou façam qualquer outra coisa, façam tudo para a glória de Deus." — 1 Coríntios 10:31</p>
-      </div>
-      <div class="stat-cards reveal reveal-d4">
-        <div class="stat-card"><b>+5.000</b><span>thumbnails criadas</span></div>
-        <div class="stat-card"><b>6+ anos</b><span>de experiência</span></div>
-        <div class="stat-card"><b>Especialista</b><span>em YouTube</span></div>
-        <div class="stat-card"><b>Atendimento</b><span>personalizado</span></div>
-        <div class="stat-card"><b>Foco</b><span>em qualidade</span></div>
-        <div class="stat-card"><b>Entrega rápida</b><span>até 2 horas</span></div>
       </div>
     </div>
   </div>
