@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Wallace Designer — Thumbnails para YouTube que aumentam o CTR</title>
-<meta name="description" content="Designer gráfico especializado em Thumbnails para YouTube e identidade visual para criadores de conteúdo. Mais de 6 anos de experiência, entrega em até 2 horas. Solicite seu orçamento pelo WhatsApp.">
+<meta name="description" content="Designer gráfico especializado em Thumbnails para YouTube e identidade visual para criadores de conteúdo. Mais de 6 anos de experiência. Solicite seu orçamento pelo WhatsApp.">
 <meta name="keywords" content="thumbnail para youtube, designer de thumbnail, thumbnail maker, identidade visual criador de conteúdo, capa de vídeo youtube">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://wallacedesigner.com/">
@@ -166,62 +166,11 @@ h2{ font-size:clamp(28px,4vw,44px); font-weight:600;}
 .btn-ghost:hover{ border-color:rgba(255,255,255,.28); transform:translateY(-2px); }
 .btn-sm{ padding:11px 20px; font-size:13.5px; }
 
-/* ============ NAV ============ */
-header{
-  position:fixed; top:0; left:0; right:0; z-index:100;
-  padding:18px 0;
-  transition:background .4s var(--ease), border-color .4s var(--ease), padding .4s var(--ease);
-  border-bottom:1px solid transparent;
-}
-header.scrolled{
-  background:rgba(10,8,8,.62);
-  backdrop-filter:blur(16px);
-  border-bottom-color:var(--line);
-  padding:13px 0;
-}
-.nav-row{ display:flex; align-items:center; justify-content:space-between; }
-.logo{ font-family:var(--font-display); font-weight:700; font-size:19px; letter-spacing:-.01em;}
-.logo span{ color:var(--red-glow); }
-.nav-links{ display:flex; gap:34px; font-size:14.5px; font-weight:500; }
-.nav-links a{ position:relative; color:var(--gray); transition:color .25s; }
-.nav-links a:hover{ color:var(--white); }
-.nav-links a::after{
-  content:""; position:absolute; left:0; bottom:-6px; width:0; height:1px; background:var(--red-glow);
-  transition:width .3s var(--ease);
-}
-.nav-links a:hover::after{ width:100%; }
-.nav-cta{ display:flex; align-items:center; gap:22px; }
-.burger{ display:none; flex-direction:column; gap:5px; background:none; border:none; padding:6px; }
-.burger span{ width:22px; height:2px; background:var(--white); border-radius:2px; transition:.3s;}
-
-@media (max-width:900px){
-  .nav-links{ display:none; }
-  .burger{ display:flex; }
-}
-@media (max-width:660px){
-  .logo{ font-size:15px; }
-  .nav-cta{ gap:12px; }
-}
-@media (max-width:400px){
-  .logo{ font-size:12px; }
-  .nav-cta .btn-sm{ padding:9px 14px; font-size:11.5px; }
-}
-
-.mobile-menu{
-  position:fixed; inset:0; z-index:99;
-  background:rgba(8,6,6,.97);
-  backdrop-filter:blur(10px);
-  display:flex; flex-direction:column; align-items:center; justify-content:center; gap:30px;
-  opacity:0; pointer-events:none; transition:opacity .35s var(--ease);
-}
-.mobile-menu.open{ opacity:1; pointer-events:auto; }
-.mobile-menu a{ font-family:var(--font-display); font-size:26px; font-weight:600; }
-
 /* ============ HERO ============ */
 .hero{
   min-height:100vh;
   display:flex; align-items:center;
-  padding-top:120px; padding-bottom:60px;
+  padding-top:60px; padding-bottom:60px;
   position:relative;
 }
 .hero-grid{
@@ -491,23 +440,6 @@ input.ba-range{
   position:absolute; inset:0; width:100%; height:100%; opacity:0; cursor:ew-resize; z-index:5; margin:0;
 }
 
-/* ============ FAQ ============ */
-.faq-list{ max-width:760px; margin:56px auto 0; }
-.faq-item{
-  border-bottom:1px solid var(--line);
-}
-.faq-q{
-  width:100%; background:none; border:none; color:var(--white);
-  display:flex; justify-content:space-between; align-items:center;
-  padding:24px 4px; text-align:left; font-family:var(--font-display); font-size:16px; font-weight:600;
-}
-.faq-q .plus{ font-size:20px; color:var(--red-glow); transition:transform .35s var(--ease); flex-shrink:0; margin-left:16px; }
-.faq-item.open .faq-q .plus{ transform:rotate(45deg); }
-.faq-a{
-  max-height:0; overflow:hidden; transition:max-height .4s var(--ease);
-}
-.faq-a p{ padding:0 4px 24px; color:var(--gray); font-size:14.5px; max-width:600px; }
-
 /* ============ CONTATO ============ */
 .contact-section{ text-align:center; }
 .contact-section h2{ font-size:clamp(30px,5vw,52px); max-width:720px; margin:0 auto 20px; }
@@ -553,33 +485,6 @@ footer{
 <div class="glow-blob" style="width:520px;height:520px; top:-10%; left:-10%; background:var(--red-mid); opacity:.35;"></div>
 <div class="glow-blob" style="width:420px;height:420px; top:60%; right:-8%; background:var(--red-mid);"></div>
 <div class="glow-blob" style="width:360px;height:360px; bottom:-6%; left:20%; background:var(--red-bright); opacity:.3;"></div>
-
-<!-- ============ NAV ============ -->
-<header id="header">
-  <div class="wrap nav-row">
-    <a href="#top" class="logo">WALLACE<span>.DESIGNER</span></a>
-    <nav class="nav-links">
-      <a href="#sobre">Sobre</a>
-      <a href="#clientes">Clientes</a>
-      <a href="#galeria">Galeria</a>
-      <a href="#faq">FAQ</a>
-    </nav>
-    <div class="nav-cta">
-      <a href="https://api.whatsapp.com/send/?phone=5511977693221&text=Ol%C3%A1%2C%20Wallace!%20Quero%20solicitar%20um%20or%C3%A7amento." target="_blank" rel="noopener" class="btn btn-primary btn-sm">Solicitar orçamento</a>
-      <button class="burger" id="burger" aria-label="Abrir menu" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-  </div>
-</header>
-
-<div class="mobile-menu" id="mobileMenu">
-  <a href="#sobre">Sobre</a>
-  <a href="#clientes">Clientes</a>
-  <a href="#galeria">Galeria</a>
-  <a href="#faq">FAQ</a>
-  <a href="https://api.whatsapp.com/send/?phone=5511977693221" target="_blank" rel="noopener" class="btn btn-primary" style="margin-top:10px;">Falar no WhatsApp</a>
-</div>
 
 <!-- ============ HERO ============ -->
 <section class="hero" id="top">
@@ -671,19 +576,11 @@ footer{
   </div>
 </section>
 
-<!-- ============ FAQ ============ -->
-<section class="section" id="faq">
-  <div class="wrap">
-    <h2 class="section-title center reveal reveal-d1">Perguntas frequentes</h2>
-    <div class="faq-list reveal reveal-d2" id="faqList"></div>
-  </div>
-</section>
-
 <!-- ============ CONTATO ============ -->
 <section class="section contact-section" id="contato">
   <div class="wrap">
     <h2 class="reveal reveal-d1">Vamos criar thumbnails que realmente chamam atenção?</h2>
-    <p class="lead reveal reveal-d1">Envie os detalhes do seu vídeo e receba sua thumbnail em até 2 horas.</p>
+    <p class="lead reveal reveal-d1">Envie os detalhes do seu vídeo e receba sua thumbnail com qualidade profissional.</p>
     <a href="https://api.whatsapp.com/send/?phone=5511977693221&text=Ol%C3%A1%2C%20Wallace!%20Quero%20solicitar%20um%20or%C3%A7amento." target="_blank" rel="noopener" class="btn btn-primary whatsapp-btn reveal reveal-d2">Falar no WhatsApp</a>
     <div class="social-row reveal reveal-d3">
       <a href="https://www.instagram.com/wallace.designer/" target="_blank" rel="noopener" class="social-circle" aria-label="Instagram">
@@ -699,46 +596,11 @@ footer{
   </div>
 </section>
 
-<!-- ============ FOOTER ============ -->
-<footer>
-  <div class="wrap">
-    <div class="footer-row">
-      <div class="footer-brand">
-        <a href="#top" class="logo">WALLACE<span>.DESIGNER</span></a>
-        <p>Especialista em Thumbnails para YouTube.</p>
-      </div>
-      <div class="footer-links">
-        <a href="https://www.instagram.com/wallace.designer/" target="_blank" rel="noopener">Instagram</a>
-        <a href="https://www.youtube.com/@WallaceThumbmaker" target="_blank" rel="noopener">YouTube</a>
-        <a href="https://www.tiktok.com/@wallace.santos8001" target="_blank" rel="noopener">TikTok</a>
-        <a href="https://api.whatsapp.com/send/?phone=5511977693221" target="_blank" rel="noopener">WhatsApp</a>
-      </div>
-    </div>
-    <div class="footer-bottom">© <span id="year"></span> Wallace Designer. Todos os direitos reservados.</div>
-  </div>
+<footer style="padding:28px 0; text-align:center; font-family:var(--font-mono); font-size:12px; letter-spacing:.04em; color:var(--gray-dim); border-top:1px solid var(--line);">
+  © 2026 Wallace Designer. Todos os direitos reservados.
 </footer>
 
 <script>
-document.getElementById('year').textContent = new Date().getFullYear();
-
-/* ---- Nav scroll state ---- */
-const header = document.getElementById('header');
-window.addEventListener('scroll', () => {
-  header.classList.toggle('scrolled', window.scrollY > 30);
-}, { passive:true });
-
-/* ---- Mobile menu ---- */
-const burger = document.getElementById('burger');
-const mobileMenu = document.getElementById('mobileMenu');
-burger.addEventListener('click', () => {
-  const open = mobileMenu.classList.toggle('open');
-  burger.setAttribute('aria-expanded', open);
-});
-mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-  mobileMenu.classList.remove('open');
-  burger.setAttribute('aria-expanded', 'false');
-}));
-
 /* ---- Scroll reveal ---- */
 const revealEls = document.querySelectorAll('.reveal');
 const io = new IntersectionObserver((entries) => {
@@ -841,29 +703,6 @@ document.querySelectorAll('.ba-slider').forEach((slider) => {
   });
 });
 
-/* ---- FAQ data ---- */
-const faqs = [
-  { q:"Quanto tempo demora?", a:"Até 2 horas após a confirmação do pagamento." },
-  { q:"Como funciona o pagamento?", a:"O pagamento é feito antecipadamente. Após a confirmação do pagamento e o envio das informações do seu vídeo, inicio a criação da sua thumbnail. A entrega é realizada em até 2 horas." },
-  { q:"Posso pedir alterações?", a:"Sim. Pequenos ajustes podem ser realizados para garantir que a thumbnail fique conforme sua expectativa." },
-  { q:"Você faz thumbnails para qualquer nicho?", a:"Sim." },
-  { q:"Você também faz identidade visual?", a:"Sim." },
-  { q:"Como solicitar um orçamento?", a:"Basta clicar no botão do WhatsApp." },
-];
-const faqList = document.getElementById('faqList');
-faqs.forEach((f) => {
-  const item = document.createElement('div');
-  item.className = 'faq-item';
-  item.innerHTML = `<button class="faq-q"><span>${f.q}</span><span class="plus">+</span></button><div class="faq-a"><p>${f.a}</p></div>`;
-  const btn = item.querySelector('.faq-q');
-  const ans = item.querySelector('.faq-a');
-  btn.addEventListener('click', () => {
-    const isOpen = item.classList.contains('open');
-    faqList.querySelectorAll('.faq-item').forEach(o => { o.classList.remove('open'); o.querySelector('.faq-a').style.maxHeight = null; });
-    if (!isOpen){ item.classList.add('open'); ans.style.maxHeight = ans.scrollHeight + 'px'; }
-  });
-  faqList.appendChild(item);
-});
 </script>
 </body>
 </html>
